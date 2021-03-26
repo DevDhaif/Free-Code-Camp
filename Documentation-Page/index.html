@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js">  </script>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@1,300&display=swap" rel="stylesheet"> 
+<link rel="stylesheet" href="style.css">
+    <title>Tailwind Fake Documentation Page</title>
+</head>
+<body>
+    
+<main id="main-doc">
+  <nav id="navbar">
+    <header>
+    <h1>Tailwind Documentation</h1>
+      
+    </header>
+    <a href="#Installing_Tailwind_CSS" class="nav-link">Installing Tailwind CSS</a>
+    <a href="#Add_Tailwind_as_a_PostCSS_plugin" class="nav-link">Add Tailwind as a PostCSS plugin</a>
+    <a href="#Create_your_configuration_file" class="nav-link">Create your configuration file</a>
+    <a href="#Include_Tailwind_in_your_CSS" class="nav-link">Include Tailwind in your CSS</a>
+    <a href="#Using_Tailwind_without_PostCSS" class="nav-link">Using Tailwind without PostCSS</a>
+    <a href="#Using_Tailwind_via_CDN" class="nav-link">Using Tailwind via CDN</a>
+    
+  </nav>
+  <div class="container">
+  <section class="main-section" id="Installing_Tailwind_CSS">
+    <header ><h3>Installing Tailwind CSS</h3></header>
+    <h4>Install Tailwind via npm:</h4>
+    <p>For most projects (and to take advantage of Tailwind's customization features), you'll want to install Tailwind and its peer-dependencies via npm.</p>
+    <code>npm install -D tailwindcss@latest postcss@latest autoprefixer@latest</code>
+    <p>Since Tailwind does not automatically add vendor prefixes to the CSS it generates, we recommend installing autoprefixer to handle this for you like we've shown in the snippet above.</p>
+  </section>
+  <section class="main-section" id="Add_Tailwind_as_a_PostCSS_plugin">
+    <header ><h4>Add Tailwind as a PostCSS plugin</h4></header>
+    <p>Add tailwindcss and autoprefixer to your PostCSS configuration. Most of the time this is a postcss.config.js file at the root of your project, but it could also be a .postcssrc file, or postcss key in your package.json file.</p>
+    <code>
+    &nbsp;// postcss.config.js <br>
+     &nbsp;module.exports = {<br>
+ &nbsp;&nbsp;&nbsp; plugins: {<br>
+ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  tailwindcss: {},<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; autoprefixer: {},<br>
+  &nbsp;&nbsp;&nbsp;}<br>
+    &nbsp;}</code>
+    <p>If you're using any other PostCSS plugins, you should read our documentation on using PostCSS as your preprocessor for more details about the best way to order them with Tailwind.</p>
+  </section>
+  <section class="main-section" id="Create_your_configuration_file">
+    <header ><h4>Create your configuration file</h4></header>
+    <p>If you'd like to customize your Tailwind installation, generate a config file for your project using the Tailwind CLI utility included when you install the tailwindcss npm package:</p>
+    <p>This will create a minimal tailwind.config.js file at the root of your project:</p>
+    <code><pre>// tailwind.config.js
+    module.exports = {
+    purge: [],
+    darkMode: false, // or 'media' or 'class'
+    theme: {
+      extend: {},
+    },
+    variants: {},
+    plugins: [],
+}</pre></code>
+
+    
+  </section>
+  <section class="main-section" id="Include_Tailwind_in_your_CSS">
+    <header ><h4>Include Tailwind in your CSS</h4></header>
+    <p>Create a CSS file if you don't already have one, and use the @tailwind directive to inject Tailwind's base, components, and utilities styles:</p>
+    <code><pre>
+  /* ./your-css-folder/styles.css */
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+    </pre></code>
+    <p>If you're using postcss-import (or a tool that uses it under the hood, such as Webpacker for Rails), use our imports instead of the @tailwind directive to avoid issues when importing any of your own additional files:</p>
+    <code><pre>
+  @import "tailwindcss/base";
+  @import "tailwindcss/components";
+  @import "tailwindcss/utilities";
+    </pre></code>
+  </section>
+    
+    
+  <section class="main-section" id="Using_Tailwind_without_PostCSS">
+    <header><h4>Using Tailwind without PostCSS</h4></header>
+    <p>Tailwind CSS requires Node.js 12.13.0 or higher.</p>
+    <p>For simple projects or just giving Tailwind a spin, you can use the Tailwind CLI tool to generate your CSS without configuring PostCSS or even installing Tailwind as a dependency if you don't want to.</p>
+    <p>Use npx which is a tool that is automatically installed alongside npm to generate a fully compiled Tailwind CSS file:</p>
+    <code><pre>
+npx tailwindcss-cli@latest build -o tailwind.css
+    </pre></code>
+    <p>This will create a file called tailwind.css generated based on Tailwind's default configuration, and automatically add any necessary vendor prefixes using autoprefixer.</p>
+  </section>  
+    <section class="main-section" id="Using_Tailwind_via_CDN">
+    <header><h4>Using Tailwind via CDN</h4></header>
+    <p>Before using the CDN build, please note that many of the features that make Tailwind CSS great are not available without incorporating Tailwind into your build process.</p>
+      <ul>
+      <li>You can't customize Tailwind's default theme</li>
+      <li>You can't use any directives like `@apply`, `@variants`, etc.</li>
+      <li>You can't enable additional variants like `group-focus`</li>
+      <li>You can't install third-party plugins</li>
+      <li>You can't tree-shake unused styles</li>
+    </ul>
+  </section>  
+  </div>
+</main> 
+</body>
+</html>
